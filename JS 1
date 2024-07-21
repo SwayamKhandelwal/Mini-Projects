@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gradient Color Buttons</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-image: linear-gradient(to right, #000, #fff); /* Default gradient */
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    #gradient-1 {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      color: white;
+      background-color: teal;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
+    }
+    #gradient-2 {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      color: white;
+      background-color: orange;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    #gradient-1:hover {
+      background-color: rgb(110, 165, 165);
+    }
+    #gradient-2:hover {
+      background-color: rgb(151, 123, 68);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button id="gradient-1">Color 1</button>
+    <button id="gradient-2">Color 2</button>
+  </div>
+
+  <script>
+    let letters = "ABCDEF0123456789";
+
+    function hexValues() {
+      let colors = "#";
+      for (let i = 0; i < 6; i++) {
+        colors += letters[Math.floor(Math.random() * 16)];
+      }
+      return colors;
+    }
+
+    const grad1 = document.querySelector("#gradient-1");
+    const grad2 = document.querySelector("#gradient-2");
+    let rgb1 = "#000";
+    let rgb2 = "#fff";
+
+    grad1.addEventListener("click", () => {
+      rgb1 = hexValues();
+      document.body.style.backgroundImage = `linear-gradient(to right, ${rgb1}, ${rgb2})`;
+      grad1.innerHTML=rgb1
+    });
+
+    grad2.addEventListener("click", () => {
+      rgb2 = hexValues();
+      document.body.style.backgroundImage = `linear-gradient(to right, ${rgb1}, ${rgb2})`;
+      grad2.innerHTML=rgb2
+    });
+  </script>
+</body>
+</html>
